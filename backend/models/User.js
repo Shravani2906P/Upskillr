@@ -2,12 +2,13 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  email: String,
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
   location: String,
-  profilePhoto: String, // store image URL or base64 string
   skillsOffered: [String],
   skillsWanted: [String],
-  availability: [String], // e.g., ["weekends", "evenings"]
+  availability: [String],
+  profilePic: String, // file path to uploaded image
   isPublic: { type: Boolean, default: true },
 }, { timestamps: true });
 
